@@ -1,0 +1,26 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.HomePage>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+	Layout = "LayoutWithShowcase.cshtml";
+}
+
+@await Html.PartialAsync("_BrandSection")
+
+<!-- features section -->
+<section>
+    <div class="features">
+        <div class="container">
+            <div class="feature-main">
+                <p>@Model.Value("serviceFeaturesSectionTitle")</p>
+                <h3>@Model.Value("serviceFeaturesHeading")</h3>
+                <a href="@Model.Value("serviceFeaturesButtonUrl")" class="btn-theme">@Model.Value("serviceFeaturesButtonText") <i class="fa-regular fa-arrow-up-right"></i></a>
+            </div>
+            <div class="expertis">
+                @Html.GetBlockListHtml(Model.ServiceFeatures)
+            </div>
+        </div>
+    </div>
+</section>
+
+@await Html.PartialAsync("_OurServicesSection", Model)
