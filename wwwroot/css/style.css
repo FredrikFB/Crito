@@ -75,6 +75,7 @@ footer {
   position: relative;
   max-width: 420px;
   border: none;
+  background-color: transparent;
   text-decoration: none;
 }
 .card img {
@@ -978,9 +979,9 @@ footer {
 }
 .article-list .container .card-list {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   flex-wrap: wrap;
-  row-gap: 50px;
+  gap: 15px;
 }
 .article-list .container .item-pagination {
   display: flex;
