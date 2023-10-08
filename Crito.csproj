@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\images\logos\" />
+    <Folder Include="wwwroot\images\placeholders\" />
     <Folder Include="wwwroot\images\showcase-sliders\" />
   </ItemGroup>
 

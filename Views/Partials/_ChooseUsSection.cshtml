@@ -1,0 +1,68 @@
+﻿@using Umbraco.Cms.Core.Models;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+
+<!-- choose us section -->
+<section>
+    <div class="choose-us">
+        <div class="container">
+                <div class="left-side">
+                    <div class="title">
+                        <p>Why Choose Us</p>
+                        <h3>Why We Are The Best Business Consulting Agency</h3>       
+                    </div>
+                    <div class="expertise">
+                        <div class="content">
+                            <div class="circle">
+                                <i class="fa-light fa-thumbs-up"></i>
+                            </div>
+                            <div class="text">
+                                <h3>Process Excellence</h3>
+                                <p>Lorem, ipsum dolor sit amet consectetur.</p>
+                            </div>
+                        </div>
+                        <div class="content">
+                            <div class="circle">
+                                <i class="fa-light fa-gem"></i>
+                            </div>
+                            <div class="text">
+                                <h3>Strategic Planning</h3>
+                                <p>Lorem, ipsum dolor sit amet consectetur.</p>
+                            </div>
+                        </div>
+                        <div class="content">
+                            <div class="circle">
+                                <i class="fa-light fa-bezier-curve"></i>
+                            </div>
+                            <div class="text">
+                                <h3>Experience Design</h3>
+                                <p>Lorem, ipsum dolor sit amet consectetur.</p>
+                            </div>
+                        </div>
+                        <div class="content">
+                            <div class="circle">
+                                <i class="fa-sharp fa-light fa-head-side-gear"></i>
+                            </div>
+                            <div class="text">
+                                <h3>Artificial Inteligense</h3>
+                                <p>Lorem, ipsum dolor sit amet consectetur.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="right-side">
+                    
+                    @{
+                        var chooseUsImage = Model.Value<MediaWithCrops>("chooseUsImage");
+                        if (chooseUsImage != null)
+                        {
+                            <img src="@chooseUsImage.MediaUrl()" alt="" />
+                        }
+                    }
+    
+                    <div class="backgrondcolor"></div>
+                </div>
+
+            <div></div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,33 @@
+﻿@using Umbraco.Cms.Core.Models;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+
+<!-- About company section -->
+<!-- add blue square -->
+<section >
+    <div class="about-company">
+        <div class="container">
+            <div class="image">
+                
+                @{
+                    var aboutCompanyImage = Model.Value<MediaWithCrops>("aboutCompanyImage");
+                    if (aboutCompanyImage != null)
+                    {
+                        <img src="@aboutCompanyImage.MediaUrl()" alt="" />
+                    }
+                }
+                
+            </div>
+            <div class="about-content">
+                <h5>About Company</h5>
+                <h3>We Are Business Consulting & Credit Repair Experts</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam officiis quas assumenda esse obcaecati? Ex esse error voluptates iure vel totam eos.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis esse quasi incidunt adipisci accusantium libero provident voluptate amet.</p>
+                <div class="about-buttons">
+                    <a href="#" class="btn-dark">Learn More <i class="fa-regular fa-arrow-up-right"></i></a>
+                    <a href="#" class="play"><i class="fa-sharp fa-light fa-circle-play"></i> Intro Video</a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</section>

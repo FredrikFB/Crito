@@ -1,0 +1,85 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<dynamic>
+
+@{
+    var itemsPerPage = 3;
+    var pageNumber = 1;
+
+    if (!int.TryParse(Context.Request.Query["page"], out pageNumber))
+        pageNumber = 1;
+
+    var selection = Umbraco.Content(Guid.Parse("a174bb16-eec6-4eb3-9f21-c01bfd609207"))?
+        .ChildrenOfType("newsItemPage")?
+        .Where(x => x.IsVisible())
+        .OrderByDescending(x => x.CreateDate).ToList();
+
+    var totalItems = selection?.Count() ?? 0;
+    var pagedItems = selection?.Skip((pageNumber - 1) * itemsPerPage).Take(itemsPerPage);
+
+    
+}
+
+
+<!-- article news section -->
+<section>
+    <div class="article-news-section">
+        <div class="container">
+            <div class="title">
+                <p>Article & News</p>
+                <h3>Get Every Single Articles & News</h3>
+                <a class="btn-transparent" href="#">Brows Articles <i class="fa-regular fa-arrow-up-right"></i></a>     
+            </div>
+            <div class="articles">
+
+                @if(pagedItems != null)
+                {
+                    @foreach (var item in pagedItems)
+                    {
+                        var url = item.Url();
+                        var date = item.CreateDate;
+                        var image = item.Value<IPublishedContent>("newsImage");
+                        var category = item.Value("newsCategory");
+                        var title = item.Name();
+                        var preamble = item.Value("newsPreamble");
+    
+    
+                        <a href="@url" class="card">
+                            <img src="@image?.Url()" alt="...">
+                            <div class="card-body">
+                                <p>@category</p>
+                                <h5 class="card-title">@title</h5>
+                                <p class="card-text">@preamble</p>
+                                <div class="article-date">
+                                    <div class="content">
+                                        <h5 class="day">@date.ToString("dd")</h5>
+                                        <p class="month">@date.ToString("MMM")</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+    
+                    }
+                }
+
+            </div>
+            
+            <nav class="item-pagination" aria-label="Page navigation">
+
+
+                @for( int i=1; i <= Math.Ceiling((decimal)totalItems / itemsPerPage); i++)
+                {
+                    @if(i == pageNumber)
+                    {
+                    <a href="#" class="item-link active"><i class="fa-solid fa-circle"></i></a>
+                    }
+                    else
+                    {
+                        <a href="?page=@i" class="item-link "><i class="fa-solid fa-circle"></i></a>
+                    }
+                }
+
+
+            </nav>
+
+        </div>
+    </div>
+</section>
